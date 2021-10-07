@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import { CssBaseline } from "@material-ui/core";
 import About from "./components/About";
 import Services from "./components/Services";
+import Works from "./components/Works";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,5 +24,6 @@ export default function App() {
     <Home />
     <About />
     <Services />
+    <Works />
   </div>);
 }
