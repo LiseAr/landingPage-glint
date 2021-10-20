@@ -13,7 +13,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
-import { IconButton, Slide, Typography } from '@material-ui/core';
+import { IconButton, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   sidebar: {
@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#0C0C0C',
     marginRight: 10,
     padding: 0,
-    width: 'fit-content',
     height: 40,
     width: 130,
   },

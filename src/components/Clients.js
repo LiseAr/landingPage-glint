@@ -112,6 +112,7 @@ export default function Clients() {
             className={classes.image}
             src={item.src}
             srcSet={item.src}
+            alt={""}
           // loading="lazing"
           // height={100}
           />

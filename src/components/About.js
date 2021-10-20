@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Box, Button, Divider, Toolbar, Typography } from '@material-ui/core';
+import { Box, Divider, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {

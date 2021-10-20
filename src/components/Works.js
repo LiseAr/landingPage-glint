@@ -88,6 +88,7 @@ export default function Works() {
             srcSet={item.src}
             loading="eager"
             height={item.height}
+            alt={}
           />))}
       </div>
     </div >

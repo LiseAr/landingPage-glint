@@ -105,7 +105,6 @@ const useStyles = makeStyles((theme) => ({
   contactInfo: {
     width: '34%',
     backgroundColor: '#121212',
-    backgroundColor: 'black',
     padding: 40,
   },
   subTitleInfo: {
