@@ -1,10 +1,8 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@material-ui/core';
-import SideBar from './SideBar';
+import { Box, Button, IconButton, Typography } from '@material-ui/core';
 
-import MenuIcon from '@material-ui/icons/Menu'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';

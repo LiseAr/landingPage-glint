@@ -10,13 +10,10 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
-import logo from './../assets/images/logo.jpg';
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton, Slide, Typography } from '@material-ui/core';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   sidebar: {

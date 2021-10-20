@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Box, Button, Divider, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { Box, Divider, IconButton, Typography } from '@material-ui/core';
 
 import FormatPaintIcon from '@material-ui/icons/FormatPaint';
 
@@ -52,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
   card: {
     width: '45vw',
     display: 'flex',
-    // backgroundColor: 'rgba(180,180,180,1)',
   },
   leftSide: {
     width: '20%',
