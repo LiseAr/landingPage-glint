@@ -27,23 +27,33 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   menuWrapper: {
-    // margin: 0,
-    // backgroundColor: '#0C0C0C',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
     position: "sticky",
     top: 10,
     right: 10,
-    height: 90,
   },
   logo: {
     height: 30,
     margin: 25,
   },
+  menuLabelWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#0C0C0C',
+    marginRight: 10,
+    padding: 0,
+    width: 'fit-content',
+    height: 40,
+    width: 130,
+  },
   menuLabel: {
     color: '#39b54a',
     fontSize: '0.8rem',
     letterSpacing: '.3rem',
+
   },
   icon: {
     color: '#fff',
@@ -90,7 +100,6 @@ const useStyles = makeStyles((theme) => ({
   mediaIcon: {
     color: 'rgba(180,180,180,0.4)',
     fontSize: '1.2rem',
-    // marginLeft: 0,
     marginRight: 8,
   }
 }));
@@ -169,17 +178,19 @@ export default function SideBar(props) {
 
   return (
     <div className={classes.menuWrapper} >
-      <Slide in={!trigger} >
+      {/* <Slide in={!trigger} >
         <img className={classes.logo} src={logo} alt="logo" />
-      </Slide>
+      </Slide> */}
 
       <div key={anchor} >
-        <Button onClick={toggleDrawer(anchor, true)}>
-          <h1 className={classes.menuLabel}> MENU </h1>
-          <IconButton>
-            <MenuIcon className={classes.icon} />
-          </IconButton>
-        </Button>
+        <Box className={classes.menuLabelWrapper}>
+          <Button onClick={toggleDrawer(anchor, true)}>
+            <h1 className={classes.menuLabel}> MENU </h1>
+            <IconButton>
+              <MenuIcon className={classes.icon} />
+            </IconButton>
+          </Button>
+        </Box>
         <Drawer
           anchor={anchor}
           open={state[anchor]}
