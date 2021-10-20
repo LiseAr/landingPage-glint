@@ -113,9 +113,9 @@ export default function SideBar(props) {
     right: false,
   });
 
-  const trigger = useScrollTrigger({
-    target: props.window ? window() : undefined
-  });
+  // const trigger = useScrollTrigger({
+  //   target: props.window ? window() : undefined
+  // });
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
