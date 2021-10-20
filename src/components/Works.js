@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Divider } from '@material-ui/core';
+import { Divider, Typography } from '@material-ui/core';
 
 import { works } from '../data/works.js';
 
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   contentTitle: {
     paddingTop: 150,
     paddingBottom: 250,
-    width: '100vw',
+    width: '100%',
     backgroundColor: '#111111',
     display: 'flex',
     flexDirection: 'column',
@@ -49,9 +49,10 @@ const useStyles = makeStyles((theme) => ({
   },
   gallery: {
     marginTop: '-15rem',
-    width: '80%',
+    width: '90%',
     columns: 2,
     columnGap: 0,
+    paddingBottom: 150,
   },
   image: {
     display: 'block',
