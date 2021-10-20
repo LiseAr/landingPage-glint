@@ -6,12 +6,15 @@ import { CssBaseline } from "@material-ui/core";
 import About from "./components/About";
 import Services from "./components/Services";
 import Works from "./components/Works";
+import Clients from "./components/Clients";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     // minHeight: '100vh',
     backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/pexels-sebastian-sørensen-1276518.jpg"})`,
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: 'repeat',
     backgroundSize: 'cover',
   },
 }))
@@ -25,5 +28,8 @@ export default function App() {
     <About />
     <Services />
     <Works />
+    <Clients />
+    <Contact />
+    <Footer />
   </div>);
 }
