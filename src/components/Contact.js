@@ -137,7 +137,7 @@ export default function Contact() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="contact">
       <div className={classes.pageWrapper}>
 
         <div className={classes.contentTitle}>

@@ -15,6 +15,9 @@ import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton, Typography } from '@material-ui/core';
 
+
+import { Link as Scroll } from "react-scroll";
+
 const useStyles = makeStyles((theme) => ({
   sidebar: {
     backgroundColor: '#0C0C0C',
@@ -46,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     width: 130,
   },
   menuLabel: {
-    color: '#39b54a',
+    color: '#0a80c2',
     fontSize: '0.8rem',
     letterSpacing: '.3rem',
 
@@ -56,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '2rem',
   },
   title: {
-    color: '#39b54a;',
+    color: '#0a80c2',
     fontSize: 11,
     textTransform: 'uppercase',
     fontWeight: 800,
@@ -71,10 +74,17 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 6,
     paddingBottom: 6,
   },
+  itemBtn: {
+    padding: 0,
+    margin: 0,
+    display: 'flex',
+    justifyContent: 'flex-start'
+  },
   itemLabel: {
     fontWeight: 600,
-    fontSize: 18,
+    fontSize: 14,
     fontFamily: 'Montserrat',
+    color: 'white',
   },
   footerSideBar: {
     marginTop: 40,
@@ -143,14 +153,24 @@ export default function SideBar(props) {
       <List className={classes.listItems}>
         {['Home', 'About', 'Services', 'Works', 'Clients', 'Contact'].map((text, index) => (
           <ListItem className={classes.item} button key={text}>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h1"
-              className={classes.itemLabel}
-            >
-              {text}
-            </Typography>
+            <Scroll to={text.toLowerCase()} smooth={true}>
+              <Button
+                className={classes.itemBtn}
+                onClick={toggleDrawer(anchor, false)}
+              // variant="outlined"
+              >
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="h1"
+                  className={classes.itemLabel}
+                >
+                  {text}
+                </Typography>
+              </Button>
+
+            </Scroll>
+
           </ListItem>
         ))}
       </List>

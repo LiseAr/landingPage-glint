@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/pexels-sebastian-sørensen-1276518.jpg"})`,
+    backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.png"})`,
     backgroundRepeat: 'repeat',
     backgroundSize: 'cover',
   },

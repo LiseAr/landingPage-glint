@@ -64,7 +64,7 @@ export default function Clients() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="clients">
       <div className={classes.contentTitle}>
         <div className={classes.titleWrapper}>
           <Typography align='center' className={classes.preTitle}>

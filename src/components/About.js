@@ -1,11 +1,16 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Box, Divider, Typography } from '@material-ui/core';
+import { Box, Collapse, Divider, Typography } from '@material-ui/core';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Indice from './Indice';
+import { useRef } from 'react';
+import { useLayoutEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: '#39b54a',
+    backgroundColor: '#0a80c2',
     height: '100vh',
   },
   content: {
@@ -20,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '60vw',
+    width: '65vw',
+    marginTop: 30,
+    // backgroundColor: 'black',
   },
   preTitle: {
     color: '#000',
@@ -34,24 +41,26 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: '#fff',
     fontFamily: 'Montserrat',
-    fontSize: '4.7rem',
+    fontSize: '4.0rem',
     fontWeight: 600,
     lineHeight: 1.25,
+    textAlign: 'center',
+    marginBottom: 40,
   },
   dividerHorizontal: {
     width: '45%',
     backgroundColor: 'rgba(255,255,255,.25)',
     height: 1,
+    marginBottom: 40,
   },
   dividerVertical: {
     backgroundColor: 'rgba(255,255,255,.25)',
-    // height: 2,
   },
   text: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '65vw',
+    width: '70vw',
     color: '#010507',
     fontFamily: 'Lora',
     fontSize: '24px',
@@ -59,13 +68,15 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 1.8,
   },
   indices: {
+    marginTop: 100,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '70vw',
+    width: '80vw',
     height: '14vh',
   },
   indice: {
+    Width: '20vw',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -74,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   number: {
     color: '#fff',
     fontFamily: 'Montserrat',
-    fontSize: '6rem',
+    fontSize: '5.5rem',
     fontWeight: 700,
     lineHeight: 1,
   },
@@ -87,62 +98,99 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
+const PROJECTS_COMPLETED = 30;
+const CUPS_OF_COFFE = 2160;
+const HOURS_WORKING = 5760;
+const IMPACTED_LIVES = 37293;
+
 export default function About() {
 
   const classes = useStyles();
+  const [startCount, setStartCount] = useState(false);
+  const [showGreetings, setShowGreetings] = useState(false);
+  const [showText, setShowText] = useState(false);
+
+  useLayoutEffect(() => {
+    function verifyPosition() {
+      if (
+        window.pageYOffset > (window.document.getElementById('about').offsetHeight * 0.5)
+      ) {
+        setShowGreetings(true);
+        setTimeout(() => {
+          setStartCount(true);
+        }, 1200);
+      }
+    }
+    window.addEventListener('scroll', verifyPosition);
+    verifyPosition();
+    return () => window.removeEventListener('scroll', verifyPosition);
+  }, [])
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="about">
       <div className={classes.content}>
-        <div className={classes.greeting}>
-          <div className={classes.preTitle}>
-            Hello There
-        </div>
-          <div className={classes.title}>
-            We Are Glint
-        </div>
-        </div>
-        <Divider variant="middle" className={classes.dividerHorizontal} />
-        <Typography align='center' className={classes.text}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
-        </Typography>
-        <Box className={classes.indices}>
-          <div className={classes.indice}>
-            <div className={classes.number}>
-              127
+        <Collapse
+          in={showGreetings}
+          {...(showGreetings ? { timeout: 1000 } : {})}
+          collapsedHeight={10}
+        >
+          <div className={classes.greeting}>
+            <div className={classes.preTitle}>
+              Hello There
             </div>
-            <div className={classes.numberDescription}>
-              Awards Received
+            <div className={classes.title}>
+              Our journey is just beginning and look how far we've come
             </div>
+            <Divider variant="middle" className={classes.dividerHorizontal} />
+            <Typography align='center' className={classes.text}>
+              From the beginning we believe that the more we know, the more we can offer. Our journey is then based on overcoming challenges. What you want? We go after the Solution. Feel free to dream that together we can transform the lives of many people.
+            </Typography>
           </div>
-          <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
-          <div className={classes.indice}>
-            <div className={classes.number}>
-              1505
+        </Collapse>
+        <Collapse
+          in={startCount}
+          {...(startCount ? { timeout: 1000 } : {})}
+          collapsedHeight={0}
+        >
+          <Box className={classes.indices}>
+            <div className={classes.indice}>
+              {startCount &&
+                <Indice metric={PROJECTS_COMPLETED} />
+              }
+              <div className={classes.numberDescription}>
+                Projects Completed
             </div>
-            <div className={classes.numberDescription}>
-              Cups of Coffee
             </div>
-          </div>
-          <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
-          <div className={classes.indice}>
-            <div className={classes.number}>
-              109
+            <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
+            <div className={classes.indice}>
+              {startCount &&
+                <Indice metric={CUPS_OF_COFFE} />
+              }
+              <div className={classes.numberDescription}>
+                Cups of Coffee
             </div>
-            <div className={classes.numberDescription}>
-              Projects Completed
             </div>
-          </div>
-          <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
-          <div className={classes.indice}>
-            <div className={classes.number}>
-              102
+            <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
+            <div className={classes.indice}>
+              {startCount &&
+                <Indice metric={HOURS_WORKING} />
+              }
+              <div className={classes.numberDescription}>
+                Hours of Working
             </div>
-            <div className={classes.numberDescription}>
-              Happy Clients
             </div>
-          </div>
-        </Box>
+            <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
+            <div className={classes.indice}>
+              {startCount &&
+                <Indice metric={IMPACTED_LIVES} />
+              }
+              <div className={classes.numberDescription}>
+                Impacted Lives
+            </div>
+            </div>
+          </Box>
+        </Collapse>
       </div>
     </div >
   )

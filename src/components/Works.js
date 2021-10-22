@@ -67,7 +67,7 @@ export default function Works() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="works">
       <div className={classes.contentTitle}>
         <div className={classes.titleWrapper}>
           <Typography align='center' className={classes.preTitle}>

@@ -93,7 +93,7 @@ export default function Services() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="services">
       <div className={classes.content}>
         <div className={classes.titleWrapper}>
           <Typography align='center' className={classes.preTitle}>

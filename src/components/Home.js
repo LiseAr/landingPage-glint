@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Box, Button, IconButton, Typography } from '@material-ui/core';
+import { Box, Button, Collapse, Fade, Grow, IconButton, Typography } from '@material-ui/core';
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -80,8 +80,22 @@ export default function Home() {
 
   const classes = useStyles();
 
+  const [checked, setChecked] = useState(false);
+  const [showStartProjectButton, setShowStartProjectButton] = useState(false);
+  const [showMoreAboutButton, setShowMoreAboutButton] = useState(false);
+
+  useEffect(() => {
+    setChecked(true);
+    setTimeout(() => {
+      setShowStartProjectButton(true)
+      setTimeout(() => {
+        setShowMoreAboutButton(true)
+      }, 700);
+    }, 800);
+  }, []);
+
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="home">
 
       <Box
         className={classes.content}
@@ -89,30 +103,50 @@ export default function Home() {
         <Box
           className={classes.welcomePart}
         >
-          <h3 className={classes.welcome}>
-            Welcome To Glint
-          </h3>
-          <Typography
-            className={classes.welcomeDescription}
+          <Collapse
+            in={checked}
+            {...(checked ? { timeout: 1000 } : {})}
+            collapsedHeight={0}
           >
-            We are a creative group
-            of people who design
-            influential brands and
-            digital experiences.
+            <h3 className={classes.welcome}>
+              Welcome To MySpace
+          </h3>
+
+            <Typography
+              className={classes.welcomeDescription}
+            >
+              Solutions that improve people's quality of life,
+              simplify their lives and expand possibilities
           </Typography>
+          </Collapse>
+
           <Box className={classes.buttonGroup}>
-            <Button
-              className={classes.button}
-              variant="outlined"
+            <Grow
+              in={showStartProjectButton}
+              style={{ transformOrigin: '0 0 0' }}
+              {...(showStartProjectButton ? { timeout: 1000 } : {})}
+            // collapsedHeight={0}
             >
-              Start a Project
+              <Button
+                className={classes.button}
+                variant="outlined"
+              >
+                Let's Do It
             </Button>
-            <Button
-              className={classes.button}
-              variant="outlined"
+            </Grow>
+            <Grow
+              in={showMoreAboutButton}
+              style={{ transformOrigin: '0 0 0' }}
+              {...(showMoreAboutButton ? { timeout: 1000 } : {})}
+            // collapsedHeight={0}
             >
-              More Aboute Us
+              <Button
+                className={classes.button}
+                variant="outlined"
+              >
+                More About
             </Button>
+            </Grow>
           </Box>
         </Box>
 
