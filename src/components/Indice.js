@@ -29,7 +29,7 @@ export default function Indice({ metric }) {
     if (count < metric) {
       setCount(count + steps)
     }
-  }, [count])
+  }, [count, metric, steps])
 
   return (
     <div className={classes.number}>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Box, Button, Collapse, Fade, Grow, IconButton, Typography } from '@material-ui/core';
+import { Box, Button, Collapse, Grow, IconButton, Typography } from '@material-ui/core';
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';

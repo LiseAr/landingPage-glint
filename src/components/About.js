@@ -3,9 +3,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, Collapse, Divider, Typography } from '@material-ui/core';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import Indice from './Indice';
-import { useRef } from 'react';
 import { useLayoutEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -109,7 +107,6 @@ export default function About() {
   const classes = useStyles();
   const [startCount, setStartCount] = useState(false);
   const [showGreetings, setShowGreetings] = useState(false);
-  const [showText, setShowText] = useState(false);
 
   useLayoutEffect(() => {
     function verifyPosition() {
