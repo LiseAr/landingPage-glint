@@ -1,7 +1,6 @@
-import { makeStyles } from '@material-ui/core';
+import { useEffect, useState } from 'react'
+import { makeStyles } from '@material-ui/core'
 import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   number: {
@@ -13,23 +12,26 @@ const useStyles = makeStyles((theme) => ({
     width: '20vw',
     textAlign: 'center',
   },
-}));
+}))
 
-const EXECUTING_TIME = 4000;
+const EXECUTING_TIME = 500
 
 export default function Indice({ metric }) {
 
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
-  const steps = metric / EXECUTING_TIME
+  const stepsLength = (metric / EXECUTING_TIME)
 
   useEffect(() => {
-    if (count < metric) {
-      setCount(count + steps)
-    }
-  }, [count, metric, steps])
+    if (count === 0) setCount(count + stepsLength)
+    else if (count < metric) setCount(count + stepsLength)
+  }, [count, stepsLength, metric])
+
+  useEffect(() => {
+    return () => setCount(0)
+  }, [])
 
   return (
     <div className={classes.number}>
