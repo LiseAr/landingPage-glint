@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Divider, Typography } from '@material-ui/core'
+import { Divider, Typography } from '@material-ui/core'
 
 import { useStyles } from './styles';
 
@@ -13,13 +13,12 @@ export default function Services() {
 
   const splitData = () => chunk(data, 2)
 
-
-  const chunk = (arr, size) => arr.reduce((acc, e, i) =>
-  (i % size
-    ? acc[acc.length - 1].push(e)
-    : acc.push([e]), acc
-  ), []
-  )
+  const chunk = (arr, size) => arr.reduce(
+    (acc, e, i) =>
+    (i % size
+      ? acc[acc.length - 1].push(e)
+      : acc.push([e]), acc), []
+  );
 
   return (
     <div className={classes.root} id="services">

@@ -1,8 +1,6 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 
 import { Box, Collapse, IconButton } from '@material-ui/core';
-
-import FormatPaintIcon from '@material-ui/icons/FormatPaint';
 
 import { useStyles } from './styles';
 
