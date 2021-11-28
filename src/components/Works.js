@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     width: '80vw',
   },
   preTitle: {
-    color: '#39b54a',
+    color: '#0a80c2',
     fontFamily: 'Montserrat',
     fontSize: '1rem',
     textTransform: 'uppercase',

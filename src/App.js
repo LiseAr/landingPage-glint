@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import SideBar from "./components/SideBar";
 import Home from "./components/Home";
 import About from "./components/About";
-import Services from "./components/Services";
+import Services from "./components/Services/index";
 import Works from "./components/Works";
 import Clients from "./components/Clients";
 import Contact from "./components/Contact";
@@ -19,14 +19,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function App() {
   const classes = useStyles();
-  return (<div className={classes.root}>
-    <SideBar />
-    <Home />
-    <About />
-    <Services />
-    <Works />
-    <Clients />
-    <Contact />
-    <Footer />
-  </div>);
+  return (
+    <div className={classes.root}>
+      <SideBar />
+      <Home />
+      <About />
+      <Services />
+      <Works />
+      <Clients />
+      <Contact />
+      <Footer />
+    </div>
+  );
 }

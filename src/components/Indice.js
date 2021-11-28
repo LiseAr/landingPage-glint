@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const EXECUTING_TIME = 500
+const EXECUTING_TIME = 60
 
 export default function Indice({ metric }) {
 
@@ -29,9 +29,7 @@ export default function Indice({ metric }) {
     else if (count < metric) setCount(count + stepsLength)
   }, [count, stepsLength, metric])
 
-  useEffect(() => {
-    return () => setCount(0)
-  }, [])
+  useEffect(() => () => setCount(0), [setCount])
 
   return (
     <div className={classes.number}>
