@@ -36,6 +36,7 @@ export default function App() {
     <div className={classes.root}>
       <img
         className={classes.image}
+        alt={''}
         src={process.env.PUBLIC_URL + "/assets/bg.png"}
       />
       {isVisible && <><SideBar />
