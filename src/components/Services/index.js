@@ -11,14 +11,15 @@ export default function Services() {
 
   const classes = useStyles();
 
-  const splitData = () => chunk(data, 2)
+  const splitData = () => {
 
-  const chunk = (arr, size) => arr.reduce(
-    (acc, e, i) =>
-    (i % size
-      ? acc[acc.length - 1].push(e)
-      : acc.push([e]), acc), []
-  );
+    const size = 2;
+    let newData = [];
+    for (var i = 0; i < data.length; i += size) {
+      newData[i] = data.slice(i, i + size)
+    }
+    return newData;
+  }
 
   return (
     <div className={classes.root} id="services">
@@ -34,8 +35,8 @@ export default function Services() {
         <Divider variant="middle" className={classes.dividerHorizontal} />
 
 
-        {splitData().map((chunck) =>
-          <Cards items={chunck} />
+        {splitData().map((chunk) =>
+          <Cards items={chunk} />
         )}
 
       </div>
