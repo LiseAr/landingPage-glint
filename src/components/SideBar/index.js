@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-// import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import MenuIcon from '@material-ui/icons/Menu'
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -12,103 +11,13 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import { makeStyles } from '@material-ui/core/styles';
 import { IconButton, Typography } from '@material-ui/core';
 
+import { useStyles } from './styles';
 
 import { Link as Scroll } from "react-scroll";
 
-const useStyles = makeStyles((theme) => ({
-  sidebar: {
-    backgroundColor: '#0C0C0C',
-    padding: 40,
-    fontFamily: 'Montserrat',
-    width: 280,
-    flex: 1,
-  },
-  menuWrapper: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    position: "sticky",
-    top: 10,
-    right: 10,
-  },
-  logo: {
-    height: 30,
-    margin: 25,
-  },
-  menuLabelWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#0C0C0C',
-    marginRight: 10,
-    padding: 0,
-    height: 40,
-    width: 130,
-  },
-  menuLabel: {
-    color: '#0a80c2',
-    fontSize: '0.8rem',
-    letterSpacing: '.3rem',
-
-  },
-  icon: {
-    color: '#fff',
-    fontSize: '2rem',
-  },
-  title: {
-    color: '#0a80c2',
-    fontSize: 11,
-    textTransform: 'uppercase',
-    fontWeight: 800,
-    letterSpacing: '0.2rem',
-    marginBottom: 35,
-  },
-  listItems: {
-    color: '#fff',
-  },
-  item: {
-    padding: 0,
-    paddingTop: 6,
-    paddingBottom: 6,
-  },
-  itemBtn: {
-    padding: 0,
-    margin: 0,
-    display: 'flex',
-    justifyContent: 'flex-start'
-  },
-  itemLabel: {
-    fontWeight: 600,
-    fontSize: 14,
-    fontFamily: 'Montserrat',
-    color: 'white',
-  },
-  footerSideBar: {
-    marginTop: 40,
-  },
-  description: {
-    color: 'rgba(180,180,180,0.4)',
-    fontSize: 13,
-    lineHeight: 2,
-    fontFamily: 'Montserrat',
-    fontWeight: 400,
-  },
-  socialMedia: {
-    marginTop: 20,
-  },
-  mediaIconWrapper: {
-    padding: 0,
-    margin: 0,
-  },
-  mediaIcon: {
-    color: 'rgba(180,180,180,0.4)',
-    fontSize: '1.2rem',
-    marginRight: 8,
-  }
-}));
+import { items } from './menuItems'
 
 export default function SideBar(props) {
 
@@ -123,10 +32,6 @@ export default function SideBar(props) {
     right: false,
   });
 
-  // const trigger = useScrollTrigger({
-  //   target: props.window ? window() : undefined
-  // });
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -139,7 +44,6 @@ export default function SideBar(props) {
     <Box
       className={classes.sidebar}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Typography
@@ -151,13 +55,12 @@ export default function SideBar(props) {
         Navigation
       </Typography>
       <List className={classes.listItems}>
-        {['Home', 'About', 'Services', 'Works', 'Clients', 'Contact'].map((text, index) => (
-          <ListItem className={classes.item} button key={text}>
-            <Scroll to={text.toLowerCase()} smooth={true}>
+        {items.map((item, index) => (
+          <ListItem className={classes.item} button key={item.text}>
+            <Scroll className={classes.scrollItem} to={item.route} smooth={true} spy={true}>
               <Button
                 className={classes.itemBtn}
                 onClick={toggleDrawer(anchor, false)}
-              // variant="outlined"
               >
                 <Typography
                   gutterBottom
@@ -165,7 +68,7 @@ export default function SideBar(props) {
                   component="h1"
                   className={classes.itemLabel}
                 >
-                  {text}
+                  {item.text}
                 </Typography>
               </Button>
 
@@ -193,14 +96,12 @@ export default function SideBar(props) {
   );
 
   return (
-    <div className={classes.menuWrapper} >
-      {/* <Slide in={!trigger} >
-        <img className={classes.logo} src={logo} alt="logo" />
-      </Slide> */}
-
+    <div className={classes.menuWrapper} id="sidebar" >
       <div key={anchor} >
         <Box className={classes.menuLabelWrapper}>
-          <Button onClick={toggleDrawer(anchor, true)}>
+          <Button
+            onClick={toggleDrawer(anchor, true)}
+          >
             <h1 className={classes.menuLabel}> MENU </h1>
             <IconButton>
               <MenuIcon className={classes.icon} />
