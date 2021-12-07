@@ -1,5 +1,5 @@
 export const items = [
-  { text: 'Home', route: 'sidebar' },
+  { text: 'Home', route: 'home' },
   { text: 'About', route: 'about' },
   { text: 'Services', route: 'services' },
   { text: 'Works', route: 'works' },
