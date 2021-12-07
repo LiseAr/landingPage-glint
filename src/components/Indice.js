@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const EXECUTING_TIME = 60
+const EXECUTING_TIME = 2000
 
 export default function Indice({ metric }) {
 
